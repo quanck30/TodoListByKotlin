@@ -5,15 +5,123 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+    tools:context=".MainActivity"
+    android:background="@color/surface"
+    >
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        app:title="やることリスト"
+        app:titleTextColor="#172033"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainContent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/background"
+        android:padding="@dimen/spacing_base"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolBar"
+        >
+
+        <TextView
+            android:id="@+id/subTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#657086"
+            android:text="10月21日（水）  ·  今日も、ひとつずつ。"
+            android:textSize="@dimen/text_caption"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/searchInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/input_search_height"
+            android:layout_marginTop="@dimen/spacing_base"
+            app:layout_constraintTop_toBottomOf="@id/subTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:boxBackgroundMode="outline"
+            app:boxBackgroundColor="@color/surface"
+            app:boxStrokeColor="@color/outline"
+            app:boxCornerRadiusTopStart="@dimen/radius_base"
+            app:boxCornerRadiusTopEnd="@dimen/radius_base"
+            app:boxCornerRadiusBottomStart="@dimen/radius_base"
+            app:boxCornerRadiusBottomEnd="@dimen/radius_base"
+            app:startIconDrawable="@drawable/ic_search"
+            app:startIconTint="@color/text_secondary"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/searchEditText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="タスクを検索"
+                android:textSize="@dimen/text_body"
+                android:textColor="@color/text_primary"
+                android:textColorHint="@color/text_secondary"
+                android:inputType="text"
+                android:singleLine="true"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/filterChipGroup"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/spacing_base"
+            app:singleSelection="true"
+            app:selectionRequired="true"
+            app:singleLine="true"
+            app:chipSpacingHorizontal="@dimen/spacing_sm"
+            app:checkedChip="@+id/chipAll"
+            app:layout_constraintTop_toBottomOf="@+id/searchInputLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            >
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipAll"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/chip_height"
+                android:textSize="@dimen/text_body"
+                android:gravity="center"
+                android:checkable="true"
+                android:text="全て"
+                app:chipCornerRadius="@dimen/radius_l"
+                app:chipIconVisible="false"
+                app:checkedIconVisible="false"
+                app:closeIconVisible="false"
+                />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipIncomplete"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/chip_height"
+                android:textSize="@dimen/text_body"
+                android:gravity="center"
+                android:checkable="true"
+                android:text="未完了"
+                app:chipCornerRadius="@dimen/radius_l"
+                app:chipIconVisible="false"
+                app:checkedIconVisible="false"
+                app:closeIconVisible="false"/>
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipCompleted"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/chip_height"
+                android:textSize="@dimen/text_body"
+                android:gravity="center"
+                android:checkable="true"
+                android:text="完了"
+                app:chipCornerRadius="@dimen/radius_l"
+                app:chipIconVisible="false"
+                app:checkedIconVisible="false"
+                app:closeIconVisible="false"/>
+        </com.google.android.material.chip.ChipGroup>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
