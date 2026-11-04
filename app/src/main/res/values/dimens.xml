@@ -33,4 +33,14 @@
 
     <!-- Accessibility -->
     <dimen name="touch_target_min">48dp</dimen>
+
+    <dimen name="chip_width">88dp</dimen>
+    <dimen name="stroke_width">1dp</dimen>
+
+    <dimen name="list_heading_height">28dp</dimen>
+    <dimen name="icon_sm">20dp</dimen>
+
+    <dimen name="card_min_height">108dp</dimen>
+    <dimen name="badge_height">24dp</dimen>
+    <dimen name="checkbox_size">48dp</dimen>
 </resources>

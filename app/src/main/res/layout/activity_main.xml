@@ -12,16 +12,19 @@
         android:id="@+id/toolBar"
         android:layout_width="match_parent"
         android:layout_height="64dp"
+        android:background="@color/surface"
+        app:titleTextAppearance="@style/TextAppearance.Todo.Title"
         app:title="やることリスト"
-        app:titleTextColor="#172033"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+
         />
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/mainContent"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:background="@color/background"
         android:padding="@dimen/spacing_base"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,15 +36,14 @@
             android:id="@+id/subTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#657086"
             android:text="10月21日（水）  ·  今日も、ひとつずつ。"
-            android:textSize="@dimen/text_caption"
+            android:textAppearance="@style/TextAppearance.Todo.Caption"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             />
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/searchInputLayout"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="@dimen/input_search_height"
             android:layout_marginTop="@dimen/spacing_base"
             app:layout_constraintTop_toBottomOf="@id/subTitle"
@@ -49,11 +51,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:boxBackgroundMode="outline"
             app:boxBackgroundColor="@color/surface"
-            app:boxStrokeColor="@color/outline"
-            app:boxCornerRadiusTopStart="@dimen/radius_base"
-            app:boxCornerRadiusTopEnd="@dimen/radius_base"
-            app:boxCornerRadiusBottomStart="@dimen/radius_base"
-            app:boxCornerRadiusBottomEnd="@dimen/radius_base"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:boxCornerRadiusTopStart="@dimen/radius_full"
+            app:boxCornerRadiusTopEnd="@dimen/radius_full"
+            app:boxCornerRadiusBottomStart="@dimen/radius_full"
+            app:boxCornerRadiusBottomEnd="@dimen/radius_full"
             app:startIconDrawable="@drawable/ic_search"
             app:startIconTint="@color/text_secondary"
             >
@@ -62,8 +65,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="タスクを検索"
-                android:textSize="@dimen/text_body"
                 android:textColor="@color/text_primary"
+                android:textAppearance="@style/TextAppearance.Todo.Body"
                 android:textColorHint="@color/text_secondary"
                 android:inputType="text"
                 android:singleLine="true"
@@ -72,56 +75,121 @@
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/filterChipGroup"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_base"
             app:singleSelection="true"
             app:selectionRequired="true"
             app:singleLine="true"
             app:chipSpacingHorizontal="@dimen/spacing_sm"
-            app:checkedChip="@+id/chipAll"
+            app:checkedChip="@id/chipAll"
             app:layout_constraintTop_toBottomOf="@+id/searchInputLayout"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             >
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipAll"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/chip_height"
-                android:textSize="@dimen/text_body"
-                android:gravity="center"
-                android:checkable="true"
-                android:text="全て"
-                app:chipCornerRadius="@dimen/radius_l"
-                app:chipIconVisible="false"
-                app:checkedIconVisible="false"
-                app:closeIconVisible="false"
+                style="@style/Widget.Todo.FilterChip"
+                android:text="すべて"
                 />
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipIncomplete"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/chip_height"
-                android:textSize="@dimen/text_body"
-                android:gravity="center"
-                android:checkable="true"
-                android:text="未完了"
-                app:chipCornerRadius="@dimen/radius_l"
-                app:chipIconVisible="false"
-                app:checkedIconVisible="false"
-                app:closeIconVisible="false"/>
+                style="@style/Widget.Todo.FilterChip"
+                android:text="未完了"/>
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipCompleted"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/chip_height"
-                android:textSize="@dimen/text_body"
-                android:gravity="center"
-                android:checkable="true"
-                android:text="完了"
-                app:chipCornerRadius="@dimen/radius_l"
-                app:chipIconVisible="false"
-                app:checkedIconVisible="false"
-                app:closeIconVisible="false"/>
+                style="@style/Widget.Todo.FilterChip"
+                android:text="完了"/>
         </com.google.android.material.chip.ChipGroup>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:id="@+id/listHeading"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/list_heading_height"
+            android:layout_marginTop="@dimen/spacing_base"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            app:layout_constraintTop_toBottomOf="@id/filterChipGroup"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+            <TextView
+                android:id="@+id/tvTaskLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="タスク"
+                android:textAppearance="@style/TextAppearance.Todo.CardTitle"
+                />
+            <TextView
+                android:id="@+id/tvTaskCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3件"
+                android:textAppearance="@style/TextAppearance.Todo.Caption"
+                android:layout_marginStart="@dimen/spacing_sm"
+                />
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+            <ImageView
+                android:id="@+id/ivSort"
+                android:layout_width="@dimen/icon_sm"
+                android:layout_height="@dimen/icon_sm"
+                android:src="@drawable/ic_sort"
+                app:tint="@color/text_secondary"
+                />
+            <TextView
+                android:id="@+id/tvSortLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.Todo.Caption"
+                android:text="期限順"
+                android:layout_marginStart="@dimen/spacing_sm"
+                />
+        </LinearLayout>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTasks"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_base"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constrainedHeight="true"
+            app:layout_constraintBottom_toTopOf="@+id/tvRemaining"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/listHeading"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:itemCount="3"
+            tools:listitem="@layout/item_task" />
+        <TextView
+            android:id="@+id/tvRemaining"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_xs"
+            android:textAppearance="@style/TextAppearance.Todo.Caption"
+            tools:text="2件のタスクが残っています"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rvTasks"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:fabCustomSize="@dimen/fab_size"
+        app:srcCompat="@drawable/ic_add"
+        app:tint="@color/surface"
+        app:backgroundTint="@color/primary"
+        app:elevation="0dp"
+        android:contentDescription="タスクを追加"
+        android:layout_marginEnd="@dimen/spacing_base"
+        android:layout_marginBottom="@dimen/spacing_base"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

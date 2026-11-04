@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:minHeight="@dimen/card_min_height"
+    android:layout_marginBottom="@dimen/spacing_md"
+    app:cardBackgroundColor="@color/surface"
+    app:strokeColor="@color/outline"
+    app:strokeWidth="@dimen/stroke_width"
+    app:cardCornerRadius="@dimen/radius_base"
+    app:cardElevation="0dp"
+    app:contentPadding="@dimen/spacing_sm">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/cbDone"
+            android:layout_width="@dimen/checkbox_size"
+            android:layout_height="@dimen/checkbox_size"
+            android:layout_marginEnd="@dimen/spacing_xs"
+            app:buttonTint="@color/checkbox_tint"
+            app:buttonIconTint="@color/surface"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.Todo.CardTitle"
+                tools:text="レポートを提出する"
+                />
+            <TextView
+                android:id="@+id/tvMeta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_xs"
+                android:textAppearance="@style/TextAppearance.Todo.Caption"
+                tools:text="今日 18:00 · 学校"
+                />
+            <TextView
+                android:id="@+id/tvPriority"
+                android:layout_width="@dimen/chip_width"
+                android:layout_height="@dimen/badge_height"
+                android:layout_marginTop="@dimen/spacing_xs"
+                android:gravity="center"
+                android:background="@drawable/bg_badge"
+                android:backgroundTint="@color/priority_high_bg"
+                android:textColor="@color/priority_high"
+                android:textAppearance="@style/TextAppearance.Todo.Label"
+                tools:text="優先度：高"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
