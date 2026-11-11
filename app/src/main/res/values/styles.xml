@@ -41,4 +41,28 @@
         <item name="chipStrokeWidth">@dimen/stroke_width</item>
         <item name="chipMinHeight">@dimen/chip_height</item>
     </style>
+
+    <style name="Widget.Todo.TextField" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="boxBackgroundColor">@color/surface</item>
+        <item name="boxCornerRadiusTopStart">@dimen/radius_md</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/radius_md</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/radius_md</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/radius_md</item>
+    </style>
+    <style name="Widget.Todo.FilterChip.Priority">
+        <item name="checkedIconVisible">true</item>
+        <item name="checkedIconTint">@color/primary</item>
+    </style>
+    <style name="Widget.Todo.TextField.Dropdown" parent="Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="boxBackgroundColor">@color/surface</item>
+        <item name="boxCornerRadiusTopStart">@dimen/radius_md</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/radius_md</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/radius_md</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/radius_md</item>
+        <item name="endIconTint">@color/text_secondary</item>
+    </style>
 </resources>

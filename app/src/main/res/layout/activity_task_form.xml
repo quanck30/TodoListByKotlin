@@ -5,6 +5,176 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/surface"
     tools:context=".TaskFormActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_height"
+        android:background="@color/surface"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationContentDescription="戻る"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:navigationIconTint="@color/text_primary"
+        app:title="タスクの追加"
+        app:titleTextAppearance="@style/TextAppearance.Todo.Title" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollContent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/background"
+        app:layout_constraintBottom_toTopOf="@+id/bottomBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolBar">
+
+        <LinearLayout
+            android:id="@+id/formContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_base">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilTitle"
+                style="@style/Widget.Todo.TextField"
+                android:hint="タイトル *">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textAppearance="@style/TextAppearance.Todo.Body"
+                    android:textColor="@color/text_primary" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilDescription"
+                style="@style/Widget.Todo.TextField"
+                android:layout_marginTop="@dimen/spacing_base"
+                android:hint="説明">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top|start"
+                    android:inputType="textMultiLine"
+                    android:minLines="3"
+                    android:textAppearance="@style/TextAppearance.Todo.Body"
+                    android:textColor="@color/text_primary" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilDeadline"
+                style="@style/Widget.Todo.TextField"
+                android:hint="期限"
+                android:layout_marginTop="@dimen/spacing_base"
+                app:endIconMode="custom"
+                app:endIconDrawable="@drawable/ic_calender"
+                app:endIconTint="@color/text_secondary"
+                app:endIconContentDescription="期限を選択"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etDeadline"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:cursorVisible="false"
+                    android:inputType="none"
+                    android:textAppearance="@style/TextAppearance.Todo.Body"
+                    android:textColor="@color/text_primary"
+                    tools:text="2026/10/21 18:00"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:id="@+id/tvPriorityLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_base"
+                android:text="優先度"
+                android:textAppearance="@style/TextAppearance.Todo.Label"/>
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/cgPriority"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_sm"
+                app:singleSelection="true"
+                app:selectionRequired="true"
+                app:singleLine="true"
+                app:chipSpacingHorizontal="@dimen/spacing_sm"
+                app:checkedChip="@+id/chipMedium">
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipHigh"
+                    android:text="高"
+                    style="@style/Widget.Todo.FilterChip.Priority"
+                    />
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipMedium"
+                    android:text="中"
+                    style="@style/Widget.Todo.FilterChip.Priority"
+                    />
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipLow"
+                    android:text="低"
+                    style="@style/Widget.Todo.FilterChip.Priority"
+                    />
+            </com.google.android.material.chip.ChipGroup>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilCategory"
+                style="@style/Widget.Todo.TextField.Dropdown"
+                android:hint="カテゴリー"
+                android:layout_marginTop="@dimen/spacing_base"
+                >
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/actvCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none"
+                    app:simpleItems="@array/categories"
+                    android:textAppearance="@style/TextAppearance.Todo.Body"
+                    android:textColor="@color/text_primary"
+                    tools:text="学校"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:id="@+id/tvRequiredNote"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_base"
+                android:textAppearance="@style/TextAppearance.Todo.Caption"
+                android:text="* 必須項目"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <FrameLayout
+        android:id="@+id/bottomBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/background"
+        android:padding="@dimen/spacing_base"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="保存する"
+            android:textAppearance="@style/TextAppearance.Todo.Label"
+            android:textColor="@color/surface"
+            app:backgroundTint="@color/primary"
+            app:cornerRadius="@dimen/radius_full" />
+    </FrameLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
