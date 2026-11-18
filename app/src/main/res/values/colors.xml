@@ -13,4 +13,5 @@
     <color name="priority_medium_bg">#FFF5D6</color>
     <color name="priority_low">#16714C</color>
     <color name="priority_low_bg">#EAF7F0</color>
+    <color name="ripple_danger">#1FB42318</color>
 </resources>

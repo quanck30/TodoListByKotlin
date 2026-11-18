@@ -43,4 +43,9 @@
     <dimen name="card_min_height">108dp</dimen>
     <dimen name="badge_height">24dp</dimen>
     <dimen name="checkbox_size">48dp</dimen>
+
+    <dimen name="tag_height">32dp</dimen>
+    <dimen name="tag_min_width">72dp</dimen>
+
+    <dimen name="icon_md">24dp</dimen>
 </resources>

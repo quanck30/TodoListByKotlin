@@ -166,14 +166,9 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSave"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/button_height"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
+            style="@style/Widget.Todo.Button"
             android:text="保存する"
-            android:textAppearance="@style/TextAppearance.Todo.Label"
-            android:textColor="@color/surface"
-            app:backgroundTint="@color/primary"
-            app:cornerRadius="@dimen/radius_full" />
+            />
     </FrameLayout>
 
 

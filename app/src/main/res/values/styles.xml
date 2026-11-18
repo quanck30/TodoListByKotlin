@@ -1,24 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="TextAppearance.Todo" parent="">
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:fontFamily">sans-serif</item>
     </style>
+
     <style name="TextAppearance.Todo.Title">
         <item name="android:textSize">@dimen/text_title</item>
         <item name="android:textStyle">bold</item>
     </style>
-    <style name="TextAppearance.Todo.CardTitle" >
+
+    <style name="TextAppearance.Todo.CardTitle">
         <item name="android:textSize">@dimen/text_card_title</item>
         <item name="android:fontFamily">sans-serif-medium</item>
     </style>
+
     <style name="TextAppearance.Todo.Label">
         <item name="android:textSize">@dimen/text_body</item>
         <item name="android:fontFamily">sans-serif-medium</item>
     </style>
+
     <style name="TextAppearance.Todo.Body">
         <item name="android:textSize">@dimen/text_body</item>
     </style>
+
     <style name="TextAppearance.Todo.Caption">
         <item name="android:textSize">@dimen/text_caption</item>
         <item name="android:textColor">@color/text_secondary</item>
@@ -51,10 +57,12 @@
         <item name="boxCornerRadiusBottomStart">@dimen/radius_md</item>
         <item name="boxCornerRadiusBottomEnd">@dimen/radius_md</item>
     </style>
+
     <style name="Widget.Todo.FilterChip.Priority">
         <item name="checkedIconVisible">true</item>
         <item name="checkedIconTint">@color/primary</item>
     </style>
+
     <style name="Widget.Todo.TextField.Dropdown" parent="Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -64,5 +72,47 @@
         <item name="boxCornerRadiusBottomStart">@dimen/radius_md</item>
         <item name="boxCornerRadiusBottomEnd">@dimen/radius_md</item>
         <item name="endIconTint">@color/text_secondary</item>
+    </style>
+
+    <style name="TextAppearance.Todo.Headline">
+        <item name="android:textSize">@dimen/text_headline</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Widget.Todo.DetailCard" parent="Widget.Material3.CardView.Filled">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="cardBackgroundColor">@color/surface</item>
+        <item name="cardCornerRadius">@dimen/radius_base</item>
+        <item name="cardElevation">0dp</item>
+        <item name="strokeWidth">0dp</item>
+        <item name="contentPadding">@dimen/spacing_base</item>
+    </style>
+
+    <style name="Widget.Todo.Button" parent="Widget.Material3.Button">
+        <item name="android:layout_height">@dimen/button_height</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="cornerRadius">@dimen/radius_full</item>
+        <item name="android:textAppearance">@style/TextAppearance.Todo.Label</item>
+        <item name="android:textColor">@color/surface</item>
+        <item name="backgroundTint">@color/primary</item>
+    </style>
+    <style name="Widget.Todo.Button.Outlined" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:layout_height">@dimen/button_height</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="cornerRadius">@dimen/radius_full</item>
+        <item name="android:textAppearance">@style/TextAppearance.Todo.Label</item>
+        <item name="android:textColor">@color/primary</item>
+        <item name="backgroundTint">@color/surface</item>
+        <item name="strokeColor">@color/outline</item>
+        <item name="strokeWidth">@dimen/stroke_width</item>
+    </style>
+
+    <style name="Widget.Todo.Button.Outlined.Danger" >
+        <item name="strokeWidth">0dp</item>
+        <item name="android:textColor">@color/priority_high</item>
+        <item name="rippleColor">@color/ripple_danger</item>
     </style>
 </resources>
